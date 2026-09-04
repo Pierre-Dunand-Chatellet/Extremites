@@ -1,0 +1,124 @@
+<!doctype html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Extrémités - Pierre Dunand-Chatellet</title>
+  <meta name="description" content="Extrémités, jeu de cartes jouable en ligne : prenez la première ou la dernière carte pour accumuler le plus de points.">
+  <meta name="robots" content="index, follow">
+  <link rel="icon" type="image/webp" href="Image/extremite.webp">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=DM+Sans:wght@300;400;500;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="extremites.css">
+</head>
+
+<body>
+  <a class="back-link" href="../projets.html#python">Retour au portfolio</a>
+
+  <main class="ext-app">
+
+    <section id="screen-mode" class="screen is-active">
+      <div class="top-bar">
+        <button class="theme-btn" id="theme-btn" type="button">☼ Mode Jour</button>
+      </div>
+      <h1 class="title">─── Extrémités ───</h1>
+      <p class="subtitle">Prenez les meilleures cartes · Accumulez le plus de points</p>
+
+      <div class="rules-panel">
+        <h2>Règles du jeu</h2>
+        <p>
+          À chaque tour, choisissez de prendre la première carte<br>
+          ou la dernière carte de la séquence.<br>
+          Le joueur qui totalise le plus de points remporte la partie.
+        </p>
+      </div>
+
+      <div class="btn-area">
+        <p class="select-label">Sélectionnez un mode de jeu</p>
+        <button class="btn btn-accent" data-mode="pvp">Joueur contre Joueur</button>
+        <button class="btn btn-gold" data-mode="bot">Contre l'Ordinateur</button>
+      </div>
+
+      <p class="hint"><a class="exe-link" href="extremites.exe">Télécharger la version Windows (.exe)</a></p>
+    </section>
+
+    <section id="screen-setup" class="screen">
+      <h1 class="title small">─── Préparation ───</h1>
+      <p class="mode-label" id="mode-label"></p>
+
+      <div class="setup-panel">
+        <h2>Nombre de cartes dans la partie</h2>
+        <div class="stepper">
+          <button class="step-btn" id="step-dec" type="button">−</button>
+          <span class="step-value" id="step-value">10</span>
+          <button class="step-btn" id="step-inc" type="button">+</button>
+        </div>
+        <p class="step-hint">Min : 2 · Max : 20</p>
+      </div>
+
+      <div class="btn-area">
+        <button class="btn btn-accent" id="start-game-btn">Commencer la Partie</button>
+        <button class="btn btn-muted" id="setup-back-btn">Retour</button>
+      </div>
+    </section>
+
+    <section id="screen-game" class="screen">
+      <header class="game-hdr">
+        <span class="game-hdr-title" id="hdr-title"></span>
+        <span class="game-hdr-remaining" id="remaining-label"></span>
+      </header>
+
+      <div class="score-row">
+        <div class="score-block">
+          <span class="score-name" id="p1-name">Joueur 1</span>
+          <span class="score-value" id="p1-score">0</span>
+        </div>
+        <span class="vs">─── vs ───</span>
+        <div class="score-block">
+          <span class="score-name" id="p2-name">Joueur 2</span>
+          <span class="score-value" id="p2-score">0</span>
+        </div>
+      </div>
+
+      <hr class="sep">
+
+      <p class="turn-indicator" id="turn-indicator"></p>
+
+      <div class="cards-track" id="cards-track"></div>
+
+      <div class="take-buttons">
+        <button class="btn btn-accent" id="take-left">Première Carte</button>
+        <button class="btn btn-accent" id="take-right">Dernière Carte</button>
+      </div>
+
+      <p class="status-line" id="status-line"></p>
+    </section>
+
+    <section id="screen-result" class="screen">
+      <h1 class="title small">─── Fin de la Partie ───</h1>
+      <p class="result-msg" id="result-msg"></p>
+
+      <div class="result-panel">
+        <h2>─ Score final ─</h2>
+        <div class="result-row">
+          <span id="result-p1"></span>
+          <span id="result-p2"></span>
+        </div>
+      </div>
+
+      <div class="btn-area">
+        <p class="select-label">Que souhaitez-vous faire ?</p>
+        <button class="btn btn-accent" id="replay-same-btn">Rejouer (mêmes paramètres)</button>
+        <button class="btn btn-gold" id="replay-count-btn">Changer le nombre de cartes</button>
+        <button class="btn btn-muted" id="replay-home-btn">Retourner à l'accueil</button>
+      </div>
+    </section>
+
+  </main>
+
+  <script src="extremites.js"></script>
+</body>
+
+</html>
