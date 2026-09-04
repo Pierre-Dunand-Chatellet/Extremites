@@ -1,5 +1,8 @@
 "use strict";
 
+// version web d'Extrémités, mon jeu de cartes fait en Python (Tkinter) à la base.
+// même logique, même IA (assez simple, cf botPlay plus bas), portée en JS.
+
 const screens = {
   mode: document.getElementById("screen-mode"),
   setup: document.getElementById("screen-setup"),
@@ -37,6 +40,9 @@ function showScreen(name) {
   screens[name].classList.add("is-active");
 }
 
+// le thème jour/nuit du jeu est indépendant de celui du reste du portfolio,
+// je le garde en mémoire (isDark) plutôt qu'en localStorage, pas besoin qu'il
+// soit persistant ici — à chaque partie on repart du thème sombre
 function applyTheme() {
   if (isDark) {
     document.documentElement.removeAttribute("data-theme");
@@ -89,6 +95,8 @@ takeLeftBtn.addEventListener("click", () => take("G"));
 takeRightBtn.addEventListener("click", () => take("D"));
 
 function startGame() {
+  // valeurs 1 à 13 comme un jeu de cartes classique (as à roi, sans les figures
+  // de couleur — juste le chiffre compte pour le score)
   const cards = [];
   for (let i = 0; i < nbCardsVal; i++) cards.push(1 + Math.floor(Math.random() * 13));
 
@@ -97,6 +105,8 @@ function startGame() {
     scoreJ1: 0,
     scoreJ2: 0,
     curPlayer: 1,
+    // tirage au sort pour savoir qui commence contre le bot, sinon le joueur
+    // aurait toujours la main en premier ce qui l'avantage un peu
     botTurn: mode === "bot" ? Math.random() < 0.5 : false,
   };
 
@@ -134,11 +144,15 @@ function updateTurnIndicator() {
   }
 }
 
+// redessine toute la rangée de cartes — plus simple de tout vider et
+// reconstruire à chaque coup que d'essayer de retirer juste une carte du DOM
 function renderCards() {
   cardsTrack.innerHTML = "";
   const n = state.cards.length;
   state.cards.forEach((value, i) => {
     const el = document.createElement("div");
+    // seules les cartes aux deux bouts sont prenables, donc seules elles
+    // sont mises en avant (couleur + flèche) pour que ce soit clair au joueur
     const edge = i === 0 || i === n - 1;
     el.className = "card" + (edge ? " is-edge" : "");
     el.textContent = String(value);
@@ -200,6 +214,9 @@ function take(side) {
   }
 }
 
+// IA volontairement simple : le bot regarde juste les deux cartes visibles
+// (première/dernière) et prend celle qui vaut le plus. Pas de calcul plus loin
+// que ça, donc un joueur qui réfléchit un peu à l'avance peut le battre
 function botPlay() {
   if (!state.cards.length) return;
 
