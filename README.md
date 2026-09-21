@@ -1,5 +1,7 @@
 # Extrémités
 
+![Aperçu du projet](apercu.jpg)
+
 Jeu de cartes : une rangée de cartes est posée, chaque joueur prend à son tour celle de
 gauche ou celle de droite, et on compte les points à la fin. Simple à comprendre, moins
 simple à jouer correctement.
