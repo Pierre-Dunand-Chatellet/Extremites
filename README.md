@@ -13,7 +13,9 @@ En ligne : https://dunandchatellet.fr/extremites/extremites.html
 | Originale, en Python (Tkinter) | `python-source/extremite.py`, compilée en `extremites.exe` |
 | Portage web, jouable sans rien installer | `extremites.html`, `extremites.css`, `extremites.js` |
 
-Le portage reprend fidèlement les règles et le déroulement de la version Python.
+**Qui a écrit quoi :** la version Python est de moi. Le portage web (`extremites.html`,
+`extremites.css`, `extremites.js`) a été écrit par une IA (Claude) à partir de mon code
+Python, dont il reprend les règles et le déroulement.
 
 ## Lancer la version Python
 
